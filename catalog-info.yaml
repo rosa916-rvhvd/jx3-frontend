@@ -1,0 +1,48 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: jx3-poi-map-app-dev
+  annotations:
+    argocd/app-name: jx3-poi-map-app-dev
+    backstage.io/kubernetes-id: jx3-poi-map-app
+    backstage.io/kubernetes-namespace: jx3
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: rosa916-rvhvd/jx3-frontend
+    janus-idp.io/tekton-enabled: 'true'
+  tags:
+    - typescript
+    - angular
+    - workshop
+  links:
+    - url: https://console-openshift-console.apps.rosa916.9nln.p1.openshiftapps.com/dev-pipelines/ns/jx3/
+      title: Pipelines
+      icon: web
+    - url: https://console-openshift-console.apps.rosa916.9nln.p1.openshiftapps.com/k8s/ns/jx3/deployments/jx3-poi-map-app
+      title: Deployment
+      icon: web
+    - url: https://devspaces.apps.rosa916.9nln.p1.openshiftapps.com/#https://github.com/rosa916-rvhvd/jx3-frontend?che-editor=che-incubator/che-code/latest&devfilePath=.devfile-vscode.yaml
+      title: OpenShift Dev Spaces (VS Code)
+      icon: web
+    - url: http://jx3-poi-map-app-jx3.apps.rosa916.9nln.p1.openshiftapps.com
+      title: Map
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "user:default/joshix"
+  system: workshop-system-jx3
+  consumesApis:
+    - gateway-api-jx3
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: workshop-system-jx3
+  tags:
+    - backstage
+    - janus-idp
+    - openshift
+    - workshop
+    - rh-summit
+spec:
+  owner: "user:default/joshix"
